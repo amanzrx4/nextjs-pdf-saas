@@ -1,9 +1,11 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
-import { theme } from "@/components/theme";
+// eslint-disable-next-line
+import theme from "@mui/material/styles/defaultTheme";
 
 export default function Home() {
+  console.log("theme", theme);
   return (
     <main
       style={{
@@ -15,10 +17,7 @@ export default function Home() {
         <>
           <Typography variant="h3">
             Chat with you
-            <Typography
-              variant="body1"
-              sx={{ fontSize: "3rem", color: theme.palette.primary.main }}
-            >
+            <Typography variant="body1" sx={{ fontSize: "3rem", color: "red" }}>
               documents
             </Typography>
             in seconds
