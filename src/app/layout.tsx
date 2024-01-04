@@ -8,6 +8,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@/components/AppBar";
+import Providers from "@/components/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,12 +25,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <meta name="viewport" content="initial-scale=1, width=device-width" />
-      <body className={inter.className}>
-        <CssBaseline />
-        <AppRouterCacheProvider>
-          <AppBar>{children}</AppBar>
-        </AppRouterCacheProvider>
-      </body>
+      <Providers>
+        <body className={inter.className}>
+          <CssBaseline />
+          <AppRouterCacheProvider>
+            <AppBar>{children}</AppBar>
+          </AppRouterCacheProvider>
+        </body>
+      </Providers>
     </html>
   );
 }

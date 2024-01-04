@@ -17,7 +17,10 @@ export default function Home() {
         <>
           <Typography variant="h3">
             Chat with you
-            <Typography variant="body1" sx={{ fontSize: "3rem", color: "red" }}>
+            <Typography
+              variant="body1"
+              sx={{ color: "secondary.main", fontSize: "3rem" }}
+            >
               documents
             </Typography>
             in seconds

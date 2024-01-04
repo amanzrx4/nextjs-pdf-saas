@@ -46,7 +46,7 @@ export default function AppBar(props: Props) {
       </Typography>
       <Divider />
       <List>
-        <RegisterLink>Sign up</RegisterLink>  
+        <RegisterLink>Sign up</RegisterLink>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
@@ -63,7 +63,6 @@ export default function AppBar(props: Props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
       <MuiAppBar component="nav">
         <Toolbar>
           <IconButton
@@ -111,7 +110,7 @@ export default function AppBar(props: Props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 3 }}>
+      <Box component="main" sx={{ width: 1 }}>
         <Toolbar />
         {props.children}
       </Box>

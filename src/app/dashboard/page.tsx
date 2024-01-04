@@ -1,38 +1,24 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
+import prisma from "@/db";
+import Dashboard from "@/components/Dashboard";
 
 async function page() {
-  const {
-    getAccessToken,
-    getBooleanFlag,
-    getFlag,
-    getIdToken,
-    getIntegerFlag,
-    getOrganization,
-    getPermission,
-    getPermissions,
-    getStringFlag,
-    getUser,
-    getUserOrganizations,
-    isAuthenticated,
-  } = getKindeServerSession();
+  const { getUser } = getKindeServerSession();
 
   const user = await getUser();
 
-  console.log("user", JSON.stringify(user, null, 10));
+  const dbUser = await prisma.user.findUnique({
+    where: {
+      id: user?.id,
+    },
+  });
 
-  //   console.log(await getAccessToken());
-  //   console.log(await getBooleanFlag("bflag", false));
-  //   console.log(await getFlag("flag", "x", "s"));
-  //   console.log(await getIntegerFlag("iflag", 99));
-  //   console.log(await getOrganization());
-  //   console.log(await getPermission("eat:chips"));
-  //   console.log(await getPermissions());
-  //   console.log(await getStringFlag("sflag", "test"));
-  //   console.log(await getUser());
-  //   console.log(await getUserOrganizations());
-  //   console.log(await isAuthenticated());
+  if (!user || !dbUser) {
+    redirect("/auth-callback?origin=dashboard");
+  }
 
-  return <div>user: {JSON.stringify(user, null, 10)}</div>;
+  return <Dashboard />;
 }
 
 export default page;
